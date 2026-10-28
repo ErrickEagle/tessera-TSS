@@ -1,0 +1,522 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  --color-ink: #0c0c0c;
+  --color-lavender: #c6bff7;
+  --color-lavender-deep: #7b6fd6;
+  --color-lavender-soft: #ece9fb;
+  --color-page: #f6f4f1;
+  --color-hero: #f7f5f2;
+  --color-surface: #f0ede9;
+  --color-inset: #edeae6;
+  --color-inset-2: #e8e4df;
+  --color-line: #e6e1db;
+  --color-line-2: #ddd8d2;
+  --color-body: #5e544f;
+  --color-muted: #6b605a;
+  --color-faint: #8a807a;
+  --color-h2: #5a4e48;
+  --color-h1: #3b302c;
+  --color-nav: #3a322e;
+  --color-chip: #2e2724;
+  --color-success: #2e8b4e;
+  --color-info: #2f6bd1;
+
+  /* The design sets no line-height on most text, so size utilities keep "normal". */
+  --text-xs--line-height: normal;
+  --text-sm--line-height: normal;
+  --text-base--line-height: normal;
+  --text-lg--line-height: normal;
+  --text-xl--line-height: normal;
+  --text-2xl--line-height: normal;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --shadow-card: 0 1px 2px rgba(28, 23, 21, 0.06), 0 8px 24px rgba(28, 23, 21, 0.08);
+  --shadow-tile: 0 1px 2px rgba(28, 23, 21, 0.05), 0 8px 20px rgba(28, 23, 21, 0.06);
+  --shadow-float: 0 8px 24px rgba(12, 12, 12, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-page);
+    color: var(--color-ink);
+    line-height: normal;
+    font-feature-settings: "tnum" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ---------- Scroll reveal (only hides content once JS has booted) ---------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s var(--ease-out-soft);
+  transition-delay: var(--d, 0s);
+}
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Logo marquee ---------- */
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent);
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 4px));
+  }
+}
+
+/* ---------- Pixel boxes ---------- */
+.px {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background-color: #ddd8d2;
+  transition:
+    background-color 0.25s,
+    opacity 0.25s;
+}
+.px.is-lit {
+  background-color: #c9c2b9 !important;
+  opacity: 1 !important;
+}
+.px-blink {
+  animation: px-blink var(--dur) ease-in-out var(--delay) infinite;
+}
+@keyframes px-blink {
+  45%,
+  55% {
+    background-color: #cfc8c0;
+    opacity: 0.9;
+  }
+}
+
+/* ---------- Dashboard ---------- */
+.anim-bob {
+  transform-origin: bottom;
+  animation: bob var(--dur, 2.4s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes bob {
+  from {
+    transform: scaleY(0.55);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.anim-grow {
+  transform-origin: left;
+  animation: grow var(--dur, 3s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes grow {
+  from {
+    transform: scaleX(0.72);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.anim-pulse {
+  animation: pulse var(--dur, 2s) ease-in-out var(--delay, 0s) infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.anim-draw {
+  stroke-dasharray: 1600;
+  animation: draw 5s ease-in-out infinite alternate;
+}
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1600;
+  }
+  60%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Nav dropdown ---------- */
+.menu-in {
+  animation: menu-in 0.22s var(--ease-out-soft);
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* ---------- How it works: step 01 card columns ---------- */
+.col-up {
+  animation: col-up 40s linear infinite;
+}
+.col-down {
+  animation: col-down 40s linear infinite;
+}
+@keyframes col-up {
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes col-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Step sequences (play when .is-playing is set on entry) ---------- */
+@keyframes seq-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.is-playing .seq-chat {
+  animation: seq-soft 0.7s var(--ease-out-soft) 0.2s both;
+}
+.type-line {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+}
+.is-playing .type-line {
+  animation:
+    type 2.4s steps(40, end) 0.5s both,
+    caret 0.7s step-end 0s 5,
+    caret-off 0.1s linear 3s both;
+}
+@keyframes type {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 300px;
+  }
+}
+@keyframes caret {
+  0% {
+    box-shadow: 2px 0 0 #7b6fd6;
+  }
+  50% {
+    box-shadow: none;
+  }
+}
+@keyframes caret-off {
+  to {
+    box-shadow: none;
+  }
+}
+.seq-loading {
+  opacity: 0;
+  visibility: hidden;
+}
+.is-playing .seq-loading {
+  animation: loading-panel 2.4s ease-in-out 3.1s both;
+}
+@keyframes loading-panel {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  12%,
+  88% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.is-playing .seq-loadbar {
+  animation: loadbar 1.8s ease-in-out 3.2s both;
+}
+@keyframes loadbar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f0ede9 0%, #e3ded8 50%, #f0ede9 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+/* Step panels: the panel eases in, then its pieces play in order, once per page view. */
+.js .step-panel {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition:
+    opacity 0.9s ease,
+    transform 1.1s var(--ease-out-soft);
+}
+.js .step-panel.is-playing {
+  opacity: 1;
+  transform: none;
+}
+.js .step-panel:not(.is-playing) :is(.seq-item, .seq-left, .seq-right, .seq-pop, .seq-bar, .seq-chat) {
+  opacity: 0;
+}
+@keyframes seq-soft {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes seq-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes seq-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px) rotate(1.5deg);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes seq-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes seq-bar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: none;
+  }
+}
+.is-playing .seq-item {
+  animation: seq-soft var(--seq-dur, 0.7s) var(--ease-out-soft) var(--seq-delay, 0s) both;
+}
+.is-playing .seq-left {
+  animation: seq-left var(--seq-dur, 0.7s) var(--ease-out-soft) var(--seq-delay, 0s) both;
+}
+.is-playing .seq-right {
+  animation: seq-right var(--seq-dur, 0.8s) var(--ease-out-soft) var(--seq-delay, 0s) both;
+}
+.is-playing .seq-pop {
+  animation: seq-pop var(--seq-dur, 0.5s) var(--ease-out-soft) var(--seq-delay, 0s) both;
+}
+.seq-bar {
+  transform-origin: bottom;
+}
+.is-playing .seq-bar {
+  animation: seq-bar var(--seq-dur, 0.6s) var(--ease-out-soft) var(--seq-delay, 0s) both;
+}
+/* A soft halo that keeps breathing around the agent avatar once the card is in. */
+.halo {
+  position: relative;
+}
+.is-playing .halo::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid #c6bff7;
+  animation: halo 2.4s ease-out 1s infinite;
+  opacity: 0;
+}
+@keyframes halo {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+/* ---------- Setup cards ---------- */
+.type-row {
+  transform-origin: left center;
+  animation: 6s linear infinite;
+}
+.type-row:nth-child(1) {
+  animation-name: type-row-1;
+}
+.type-row:nth-child(2) {
+  animation-name: type-row-2;
+}
+.type-row:nth-child(3) {
+  animation-name: type-row-3;
+}
+.type-row:nth-child(4) {
+  animation-name: type-row-4;
+}
+.type-row:nth-child(5) {
+  animation-name: type-row-5;
+}
+@keyframes type-row-1 {
+  0% { transform: scaleX(0); }
+  12%, 90% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes type-row-2 {
+  0%, 14% { transform: scaleX(0); }
+  26%, 90% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes type-row-3 {
+  0%, 28% { transform: scaleX(0); }
+  40%, 90% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes type-row-4 {
+  0%, 42% { transform: scaleX(0); }
+  54%, 90% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes type-row-5 {
+  0%, 56% { transform: scaleX(0); }
+  68%, 90% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+.wave {
+  animation: wave 18s linear infinite;
+}
+@keyframes wave {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.talk {
+  transform-origin: center;
+  animation: talk 0.9s ease-in-out infinite alternate;
+}
+@keyframes talk {
+  0% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(0.9);
+  }
+  100% {
+    transform: scaleY(0.45);
+  }
+}
+
+/* ---------- Reduced motion: every animation stops, content shows final state ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track,
+  .px-blink,
+  .anim-bob,
+  .anim-grow,
+  .anim-pulse,
+  .anim-draw,
+  .menu-in,
+  .col-up,
+  .col-down,
+  .shimmer,
+  .wave,
+  .talk,
+  .type-row,
+  .is-playing .seq-chat,
+  .is-playing .seq-item,
+  .is-playing .seq-left,
+  .is-playing .seq-right,
+  .is-playing .seq-pop,
+  .is-playing .seq-bar,
+  .is-playing .halo::after,
+  .is-playing .type-line,
+  .is-playing .seq-loading,
+  .is-playing .seq-loadbar {
+    animation: none !important;
+  }
+  .anim-draw {
+    stroke-dasharray: none;
+  }
+  .js .step-panel {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .js .step-panel:not(.is-playing) :is(.seq-item, .seq-left, .seq-right, .seq-pop, .seq-bar, .seq-chat) {
+    opacity: 1;
+  }
+  .type-line {
+    max-width: none;
+  }
+}
