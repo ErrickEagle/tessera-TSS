@@ -15,11 +15,11 @@ function Sheet({ icon, label, typing = false, style }: { icon: ReactNode; label:
       <p className="mt-3 text-[13px] font-medium text-nav">{label}</p>
       <div className="mt-3.5 flex flex-col gap-2.5">
         {[1, 1, 1, 1, 0.5].map((w, i) => (
-          <span
-            key={i}
-            className={`h-px ${typing ? "type-row bg-[#CFC8C0]" : "bg-line"}`}
-            style={{ width: `${w * 100}%` }}
-          />
+          <span key={i} className="relative h-[3px] rounded-full bg-line" style={{ width: `${w * 100}%` }}>
+            {typing && (
+              <span className={`write-row write-row-${i} absolute inset-0 rounded-full bg-[#8C827A]`} />
+            )}
+          </span>
         ))}
       </div>
     </div>

@@ -96,48 +96,8 @@ const steps: Step[] = [
 ];
 
 export function HowItWorks() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [stuck, setStuck] = useState(false);
-  const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const wrap = wrapRef.current;
-      const bar = barRef.current;
-      if (!wrap || !bar) return;
-      const stickTop = parseFloat(getComputedStyle(bar).top) || 0;
-      const barRect = bar.getBoundingClientRect();
-      const wrapRect = wrap.getBoundingClientRect();
-      const isStuck = wrapRect.top < stickTop && barRect.top <= stickTop + 1;
-      setStuck(isStuck);
-      // Hide the bar once the last step has mostly scrolled past.
-      setHidden(wrapRect.bottom < stickTop + barRect.height + 160);
-      let cur = 0;
-      howSteps.forEach((s, i) => {
-        const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) cur = i;
-      });
-      if (isStuck) setActive(cur);
-      else if (wrapRect.top > stickTop) setActive(0);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
   // Keep the active tab visible when the bar scrolls sideways on small screens.
   useEffect(() => {
     const tabs = tabsRef.current;
@@ -151,20 +111,15 @@ export function HowItWorks() {
       <Eyebrow>HOW IT WORKS</Eyebrow>
       <SectionHeading first="From scattered data" second="to systems that run themselves" />
 
-      <div ref={wrapRef} className="w-full max-w-[1120px]">
+      <div className="w-full max-w-[1120px]">
         <div
-          ref={barRef}
-          className={`sticky top-[84px] z-[55] mt-10 flex justify-center transition-opacity duration-300 md:top-24 ${
-            hidden ? "pointer-events-none opacity-0" : "opacity-100"
-          }`}
+          className="mt-10 flex justify-center"
         >
           <div
             ref={tabsRef}
             role="tablist"
             aria-label="How it works steps"
-            className={`grid shrink-0 auto-cols-[minmax(150px,1fr)] grid-flow-col gap-1.5 overflow-x-auto rounded-full border border-line-2 bg-hero p-1.5 transition-[width,box-shadow] duration-400 ease-out-soft [scrollbar-width:none] md:grid-cols-5 md:auto-cols-auto md:grid-flow-row ${
-              stuck ? "w-[min(1200px,calc(100vw-32px))] shadow-float" : "w-full"
-            }`}
+            className={`grid shrink-0 auto-cols-[minmax(150px,1fr)] grid-flow-col gap-1.5 overflow-x-auto rounded-full border border-line-2 bg-hero p-1.5 w-full [scrollbar-width:none] md:grid-cols-5 md:auto-cols-auto md:grid-flow-row`}
           >
             {howSteps.map((s, i) => (
               <a

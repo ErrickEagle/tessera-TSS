@@ -520,3 +520,68 @@
     max-width: none;
   }
 }
+
+/* ---------- First-load intro: headline words, then copy, then the nav drops in ---------- */
+.js .intro-word {
+  display: inline-block;
+  animation: intro-rise 0.8s var(--ease-out-soft) var(--intro-delay, 0s) both;
+}
+.js .intro {
+  animation: intro-rise 0.9s var(--ease-out-soft) var(--intro-delay, 0s) both;
+}
+.js .intro-nav {
+  animation: intro-nav 0.8s var(--ease-out-soft) 1.15s both;
+}
+@keyframes intro-rise {
+  from { opacity: 0; transform: translateY(24px); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes intro-nav {
+  from { opacity: 0; transform: translateY(-120%); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Connector card: lines written left to right, on a loop ---------- */
+.write-row {
+  clip-path: inset(0 100% 0 0);
+}
+.write-row-0 { animation: write-row-0 6.5s steps(80, end) infinite; }
+@keyframes write-row-0 {
+  0%, 4% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  15%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  94%, 100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+.write-row-1 { animation: write-row-1 6.5s steps(80, end) infinite; }
+@keyframes write-row-1 {
+  0%, 17% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  28%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  94%, 100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+.write-row-2 { animation: write-row-2 6.5s steps(80, end) infinite; }
+@keyframes write-row-2 {
+  0%, 30% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  41%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  94%, 100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+.write-row-3 { animation: write-row-3 6.5s steps(80, end) infinite; }
+@keyframes write-row-3 {
+  0%, 43% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  54%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  94%, 100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+.write-row-4 { animation: write-row-4 6.5s steps(80, end) infinite; }
+@keyframes write-row-4 {
+  0%, 56% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  67%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  94%, 100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .intro-word,
+  .js .intro,
+  .js .intro-nav,
+  .write-row {
+    animation: none;
+    clip-path: none;
+  }
+}

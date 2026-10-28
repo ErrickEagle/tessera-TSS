@@ -44,7 +44,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-4 top-4 z-[60] mx-auto rounded-[28px] border border-[#E4DFD9] bg-white transition-[left,right,max-width,box-shadow] duration-400 ease-out-soft md:inset-x-8 md:top-6 ${
+      className={`intro-nav fixed inset-x-4 top-4 z-[60] mx-auto rounded-[28px] border border-[#E4DFD9] bg-white transition-[left,right,max-width,box-shadow] duration-400 ease-out-soft md:inset-x-8 md:top-6 ${
         scrolled ? "max-w-[1376px] shadow-float xl:inset-x-[120px] xl:max-w-[1200px]" : "max-w-[1376px]"
       }`}
     >

@@ -1,6 +1,22 @@
+import { Fragment } from "react";
 import { ArrowRight, Bot, FileText, Globe, LayoutGrid, Lock, ShieldCheck, Shuffle } from "lucide-react";
 import { logos } from "@/lib/content";
 import { PixelField } from "./PixelField";
+
+const intro = (delay: number) => ({ "--intro-delay": `${delay}s` }) as React.CSSProperties;
+
+/** Splits a line into words that rise in one after another on first load. */
+function Words({ text, start }: { text: string; start: number }) {
+  const words = text.split(" ");
+  return words.map((w, i) => (
+    <Fragment key={i}>
+      <span className="intro-word" style={intro(0.1 + (start + i) * 0.07)}>
+        {w}
+      </span>
+      {i < words.length - 1 && " "}
+    </Fragment>
+  ));
+}
 
 function Tag({ color, border, icon, children }: { color: string; border: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -23,16 +39,18 @@ export function Hero() {
           <PixelField variant="hero" />
           <div className="flex w-full flex-col items-center px-4 pt-[120px] text-center md:pt-[184px]">
             <h1 className="text-[36px] leading-[44px] font-medium tracking-[-0.035em] text-ink sm:text-[48px] sm:leading-[56px] md:text-[56px] md:leading-[64px]">
-              Run your business on
+              <Words text="Run your business on" start={0} />
               <br />
-              <span className="text-h1">systems, not spreadsheets.</span>
+              <span className="text-h1">
+                <Words text="systems, not spreadsheets." start={4} />
+              </span>
             </h1>
-            <p className="mt-4 max-w-[520px] text-base leading-6 text-muted">
+            <p className="intro mt-4 max-w-[520px] text-base leading-6 text-muted" style={intro(0.75)}>
               Connect your data, describe what you need, and Tessera builds the apps and agents that keep it running.
               Yours to own, live in hours.
             </p>
 
-            <div className="relative mt-10 w-full max-w-[736px] sm:px-8 sm:pt-[37px]">
+            <div className="intro relative mt-10 w-full max-w-[736px] sm:px-8 sm:pt-[37px]" style={intro(0.95)}>
               <div
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 hidden h-[216px] rounded-t-[48px] border border-b-0 border-[#E2DDD7] sm:block"
