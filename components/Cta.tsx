@@ -3,9 +3,9 @@ import { Reveal } from "./ui";
 
 export function Cta() {
   return (
-    <section className="relative bg-page">
+    <section className="relative overflow-hidden bg-page">
       <div className="relative mx-auto max-w-[1440px]">
-        <div className="relative z-10 flex min-h-[400px] flex-col items-center justify-center bg-hero px-4 py-20 text-center md:min-h-[480px] lg:mx-[120px] lg:border-x lg:border-line xl:mx-[206px]">
+        <div className="relative z-10 flex min-h-[400px] flex-col items-center justify-center bg-hero px-4 py-20 text-center md:min-h-[480px] lg:mx-auto lg:max-w-[1120px] lg:border-x lg:border-line">
           <PixelField variant="cta" />
           <Reveal
             as="h2"
