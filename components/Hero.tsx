@@ -100,7 +100,7 @@ export function Hero() {
                       <button
                         type="button"
                         aria-label="Send prompt"
-                        className="flex size-11 cursor-pointer items-center justify-center rounded-full bg-ink transition-transform hover:scale-105"
+                        className="flex size-11 cursor-pointer items-center justify-center btn-dark rounded-full"
                       >
                         <ArrowRight size={16} color="#FFFFFF" strokeWidth={2} aria-hidden="true" />
                       </button>

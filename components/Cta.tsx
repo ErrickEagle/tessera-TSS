@@ -19,12 +19,12 @@ export function Cta() {
             Free to start. Live in hours. No credit card needed.
           </Reveal>
           <Reveal delay={0.3} className="mt-10 flex flex-wrap justify-center gap-3">
-            <a href="#" className="flex h-12 items-center rounded-full bg-ink px-6 text-[15px] font-medium text-white hover:bg-[#2a2522]">
+            <a href="#" className="btn-dark flex h-12 items-center rounded-full px-6 text-[15px] font-medium text-white">
               Start for free
             </a>
             <a
               href="#"
-              className="flex h-12 items-center rounded-full border border-[#E0DBD5] bg-white px-6 text-[15px] font-medium text-ink hover:border-[#CFC8C0]"
+              className="btn-light flex h-12 items-center rounded-full border border-[#E0DBD5] bg-white px-6 text-[15px] font-medium text-ink"
             >
               Talk to our team
             </a>

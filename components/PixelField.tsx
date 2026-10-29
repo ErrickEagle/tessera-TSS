@@ -78,6 +78,15 @@ const ctaPixels = generate(
   480, -1, 0.012, 0.25, 0.4,
 );
 
+const setupPixels = generate(
+  41,
+  [
+    [50, 120, 80], [160, 300, 60], [40, 520, 90], [150, 720, 60], [70, 900, 70],
+    [1370, 180, 80], [1280, 400, 70], [1400, 600, 60], [1300, 820, 85],
+  ],
+  1100, -1, 0.012, 0.3, 0.45,
+);
+
 const Band = memo(function Band({ pixels, side }: { pixels: Px[]; side: "left" | "right" }) {
   const edge = side === "left" ? "right" : "left";
   return (
@@ -97,8 +106,8 @@ const Band = memo(function Band({ pixels, side }: { pixels: Px[]; side: "left" |
  * Pixel boxes either side of the centre column, running out to the screen edge,
  * Place inside the centre column.
  */
-export function PixelField({ variant }: { variant: "hero" | "cta" }) {
-  const field = variant === "hero" ? heroPixels : ctaPixels;
+export function PixelField({ variant }: { variant: "hero" | "cta" | "setup" }) {
+  const field = { hero: heroPixels, cta: ctaPixels, setup: setupPixels }[variant];
   return (
     <div aria-hidden="true" className="absolute inset-0 -z-10 hidden lg:block">
       <Band pixels={field.left} side="left" />

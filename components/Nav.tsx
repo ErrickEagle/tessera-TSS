@@ -123,11 +123,11 @@ export function Nav() {
           </a>
           <a
             href="#"
-            className="hidden h-10 items-center rounded-full border border-[#E0DBD5] bg-white px-4 font-medium sm:flex"
+            className="btn-light hidden h-10 items-center rounded-full border border-[#E0DBD5] bg-white px-4 font-medium sm:flex"
           >
             Start for free
           </a>
-          <a href="#" className="hidden h-10 items-center rounded-full bg-ink px-4 font-medium text-white sm:flex">
+          <a href="#" className="btn-dark hidden h-10 items-center rounded-full px-4 font-medium text-white sm:flex">
             Contact us
           </a>
           <button
@@ -183,7 +183,7 @@ export function Nav() {
             <a href="#" className="flex h-11 flex-1 items-center justify-center rounded-full border border-[#E0DBD5] font-medium">
               Start for free
             </a>
-            <a href="#" className="flex h-11 flex-1 items-center justify-center rounded-full bg-ink font-medium text-white">
+            <a href="#" className="btn-dark flex h-11 flex-1 items-center justify-center rounded-full font-medium text-white">
               Contact us
             </a>
           </div>

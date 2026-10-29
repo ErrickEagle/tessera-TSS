@@ -96,7 +96,7 @@ export function Pricing() {
               <a
                 href="#"
                 className={`mt-auto flex h-12 items-center justify-center rounded-full text-[15px] font-medium transition-colors ${
-                  plan.primary ? "bg-ink text-white hover:bg-[#2a2522]" : "bg-[#E3DED8] text-ink hover:bg-[#D9D3CC]"
+                  plan.primary ? "btn-dark text-white" : "btn-light bg-[#E3DED8] text-ink"
                 }`}
               >
                 {plan.cta}

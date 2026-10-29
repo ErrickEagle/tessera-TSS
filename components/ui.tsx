@@ -108,7 +108,7 @@ export function ArrowButton({ children, href = "#" }: { children: ReactNode; hre
   return (
     <a
       href={href}
-      className="mt-6 inline-flex h-10 items-center gap-2 self-start rounded-full bg-ink pr-4 pl-5 text-sm font-medium text-white transition-colors hover:bg-[#2a2522]"
+      className="mt-6 inline-flex h-10 items-center gap-2 self-start btn-dark rounded-full pr-4 pl-5 text-sm font-medium text-white"
     >
       {children}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

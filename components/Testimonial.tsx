@@ -112,7 +112,7 @@ export function Testimonial() {
               />
             ))}
           </div>
-          <a href="#" className="mt-8 inline-flex h-12 items-center rounded-full bg-ink px-6 text-[15px] font-medium text-white hover:bg-[#2a2522]">
+          <a href="#" className="mt-8 btn-dark inline-flex h-12 items-center rounded-full px-6 text-[15px] font-medium text-white">
             Read the case study
           </a>
         </div>
