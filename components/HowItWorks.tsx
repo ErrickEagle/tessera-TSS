@@ -107,9 +107,7 @@ export function HowItWorks() {
   }, [active]);
 
   return (
-    <section id="how-it-works" className="relative isolate flex flex-col items-center px-4 pt-20 lg:px-14 pb-20 text-center md:pt-28 md:pb-28">
-      {/* A full circle the width of the page column, opening the section like a sheet of paper. */}
-      <div aria-hidden="true" className="page-circle absolute top-0 left-1/2 -z-10 aspect-square w-[min(1200px,calc(100vw-64px))] -translate-x-1/2 rounded-full" />
+    <section id="how-it-works" className="relative flex flex-col items-center px-4 pt-20 lg:px-14 lg:pt-40 pb-20 text-center md:pt-28 md:pb-28">
       <Eyebrow>HOW IT WORKS</Eyebrow>
       <SectionHeading first="From scattered data" second="to systems that run themselves" />
 

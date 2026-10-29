@@ -7,7 +7,7 @@ import { Pricing } from "@/components/Pricing";
 import { Testimonial } from "@/components/Testimonial";
 import { Cta } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
-import { PaperBackdrop, SectionRule } from "@/components/PaperBackdrop";
+import { PaperBackdrop, RoundSection, SectionRule } from "@/components/PaperBackdrop";
 
 export default function Home() {
   return (
@@ -20,9 +20,11 @@ export default function Home() {
           <SectionRule />
           <Systems />
           <SectionRule />
-          <HowItWorks />
-          <Setup />
-          <Pricing />
+          <RoundSection>
+            <HowItWorks />
+            <Setup />
+            <Pricing />
+          </RoundSection>
           <SectionRule />
           <Testimonial />
           <SectionRule />

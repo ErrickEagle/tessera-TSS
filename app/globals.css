@@ -684,10 +684,24 @@
   border: 1px solid #d8d2ca;
   background: var(--color-sheet);
 }
-/* The full circle behind How it works. */
-.page-circle {
+/* Pill that opens with the top half of a circle and closes with the bottom half. */
+.round-section {
   border: 1px solid var(--color-line);
+  border-radius: min(600px, calc(50vw - 32px));
   background: #fefdfb;
+}
+/* Paper's canvas grid: solid hairlines across, dotted lines down. */
+.canvas-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M0 .5H96' stroke='%23e0dad1'/%3E%3Cpath d='M.5 0V96' stroke='%23d6cfc5' stroke-dasharray='2 4'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  background-position: left top;
+  -webkit-mask-image: linear-gradient(to right, #000 60%, transparent);
+  mask-image: linear-gradient(to right, #000 60%, transparent);
+}
+.canvas-grid-left {
+  background-position: right top;
+  -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+  mask-image: linear-gradient(to left, #000 60%, transparent);
 }
 .footer-mark {
   color: transparent;

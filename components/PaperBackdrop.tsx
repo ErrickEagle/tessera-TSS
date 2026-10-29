@@ -27,10 +27,35 @@ export function PaperBackdrop() {
 /** A hairline across the centre column with square handles at both ends, between sections. */
 export function SectionRule() {
   return (
-    <div aria-hidden="true" className="relative mx-auto h-px w-full max-w-[1200px] bg-line lg:max-w-[min(1200px,calc(100vw-64px))]">
+    <div aria-hidden="true" className="relative z-10 mx-auto h-px w-full max-w-[1200px] bg-line lg:max-w-[min(1200px,calc(100vw-64px))]">
       <span className="handle -top-[3.5px] -left-[4px] hidden lg:block" />
       <span className="handle -top-[3.5px] -right-[4px] hidden lg:block" />
-      <span className="handle -top-[3.5px] left-1/2 -ml-[4px] hidden lg:block" />
+    </div>
+  );
+}
+
+/**
+ * Paper's canvas grid for the margins: thin solid lines across, dotted lines down.
+ * Place inside a column-wide wrapper; it runs from the column edge to the screen edge.
+ */
+export function CanvasGrid({ side }: { side: "left" | "right" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`canvas-grid pointer-events-none absolute inset-y-0 hidden w-[50vw] lg:block ${side === "right" ? "left-full" : "right-full canvas-grid-left"}`}
+    />
+  );
+}
+
+/** Round section: a full circle's top half opens it, the bottom half closes it. Wraps several sections. */
+export function RoundSection({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative">
+      <div
+        aria-hidden="true"
+        className="round-section absolute inset-y-0 left-1/2 hidden w-[min(1200px,calc(100vw-64px))] -translate-x-1/2 lg:block"
+      />
+      <div className="relative">{children}</div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { ArrowRight, Bot, FileText, Globe, LayoutGrid, Lock, ShieldCheck, Shuffle } from "lucide-react";
 import { logos } from "@/lib/content";
+import { CanvasGrid } from "./PaperBackdrop";
 
 const intro = (delay: number) => ({ "--intro-delay": `${delay}s` }) as React.CSSProperties;
 
@@ -35,6 +36,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-[1440px]">
 
         <div className="relative z-10 flex flex-col items-center lg:mx-auto lg:max-w-[min(1200px,calc(100vw-64px))]">
+          <CanvasGrid side="right" />
           <div className="flex w-full flex-col items-center px-4 pt-[120px] text-center md:pt-[184px]">
             <h1 className="text-[36px] leading-[44px] font-medium tracking-[-0.035em] text-ink sm:text-[48px] sm:leading-[56px] md:text-[56px] md:leading-[64px]">
               <Words text="Run your business on" start={0} />
