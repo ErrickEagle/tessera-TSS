@@ -7,19 +7,28 @@ import { Pricing } from "@/components/Pricing";
 import { Testimonial } from "@/components/Testimonial";
 import { Cta } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
+import { PaperBackdrop, SectionRule } from "@/components/PaperBackdrop";
 
 export default function Home() {
   return (
     <>
       <Nav />
-      <main className="overflow-x-clip">
-        <Hero />
-        <Systems />
-        <HowItWorks />
-        <Setup />
-        <Pricing />
-        <Testimonial />
-        <Cta />
+      <main className="relative overflow-x-clip">
+        <PaperBackdrop />
+        <div className="relative">
+          <Hero />
+          <SectionRule />
+          <Systems />
+          <SectionRule />
+          <HowItWorks />
+          <Setup />
+          <Pricing />
+          <SectionRule />
+          <Testimonial />
+          <SectionRule />
+          <Cta />
+          <SectionRule />
+        </div>
       </main>
       <Footer />
     </>

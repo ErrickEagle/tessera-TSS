@@ -34,7 +34,7 @@ export function Systems() {
   const [tab, setTab] = useState<TeamTab>("Ops");
 
   return (
-    <section className="flex flex-col items-center bg-surface px-4 py-20 text-center md:py-28">
+    <section className="flex flex-col items-center px-4 py-20 text-center md:py-28">
       <Eyebrow>BUILD SYSTEMS, NOT TOOLS</Eyebrow>
       <SectionHeading first="Stop wiring up tools." second="Run one connected system." />
       <p className="mt-4 max-w-[391px] text-base leading-6 text-body">

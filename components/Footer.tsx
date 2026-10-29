@@ -33,8 +33,14 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-hero px-4 pt-16 pb-10 sm:px-8 lg:px-16">
-      <div className="mx-auto grid max-w-[1312px] grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 lg:grid-cols-[360px_repeat(4,minmax(0,1fr))]">
+    <footer className="relative overflow-hidden border-t border-line bg-[#f6f4ef] px-4 pt-16 pb-[22vw] shadow-[0_-12px_32px_-20px_rgba(28,23,21,0.18)] sm:px-8 lg:px-16">
+      <span
+        aria-hidden="true"
+        className="footer-mark pointer-events-none absolute -bottom-[0.18em] left-1/2 -translate-x-1/2 text-[30vw] leading-none font-medium tracking-[-0.06em] whitespace-nowrap select-none"
+      >
+        Tessera
+      </span>
+      <div className="relative mx-auto grid max-w-[1312px] grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 lg:grid-cols-[360px_repeat(4,minmax(0,1fr))]">
         <div className="col-span-2 flex flex-col items-start gap-4 md:col-span-4 lg:col-span-1">
           <a href="#" aria-label="Tessera home" className="flex items-center gap-3 text-ink">
             <LogoMark size={40} />
@@ -67,7 +73,7 @@ export function Footer() {
           </nav>
         ))}
       </div>
-      <div className="mx-auto mt-16 flex max-w-[1312px] flex-col gap-4 border-t border-line pt-6 text-xs tracking-[0.08em] text-faint md:flex-row md:justify-between">
+      <div className="relative mx-auto mt-16 flex max-w-[1312px] flex-col gap-4 border-t border-line pt-6 text-xs tracking-[0.08em] text-faint md:flex-row md:justify-between">
         <span>© 2026 TESSERA. ALL RIGHTS RESERVED.</span>
         <div className="flex flex-wrap gap-x-8 gap-y-2">
           {legalLinks.map((l) => (

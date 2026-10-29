@@ -7,7 +7,8 @@
   --color-lavender: #c6bff7;
   --color-lavender-deep: #7b6fd6;
   --color-lavender-soft: #ece9fb;
-  --color-page: #f6f4f1;
+  --color-page: #f2f0ea;
+  --color-sheet: #fcfbf8;
   --color-hero: #f7f5f2;
   --color-surface: #f0ede9;
   --color-inset: #edeae6;
@@ -43,7 +44,7 @@
     scroll-behavior: smooth;
   }
   body {
-    background: var(--color-page);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.32 0 0 0 0 0.28 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), var(--color-page);
     color: var(--color-ink);
     line-height: normal;
     font-feature-settings: "tnum" 1;
@@ -644,5 +645,72 @@
   }
   .btn-dark:hover::after {
     transform: translateX(-120%);
+  }
+}
+
+/* ---------- Paper backdrop ---------- */
+.plane {
+  background: linear-gradient(160deg, #ebe9e1 0%, #e7e4db 100%);
+}
+.plane-alt {
+  background: linear-gradient(200deg, #f6f5f0 0%, #eeece5 100%);
+}
+/* A slow gradient drifting across the plane, like light moving over paper. */
+.plane-shader {
+  background: linear-gradient(120deg, #ebe9e1, #e7e4f2, #f1e9df, #e3ece6, #ebe9e1);
+  background-size: 400% 400%;
+  animation: plane-drift 24s ease-in-out infinite alternate;
+}
+@keyframes plane-drift {
+  from { background-position: 0% 30%; }
+  to { background-position: 100% 70%; }
+}
+.ruler {
+  background-color: #f4f2ec;
+  background-image:
+    repeating-linear-gradient(to bottom, #c9c3ba 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(to bottom, #d6d1c9 0 1px, transparent 1px 8px);
+  background-size: 14px 100%, 7px 100%;
+  background-repeat: no-repeat;
+  background-position: right top, right top;
+}
+.ruler-right {
+  background-position: left top, left top;
+}
+.handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #d8d2ca;
+  background: var(--color-sheet);
+}
+.grid-patch {
+  background-image:
+    linear-gradient(to right, #e3ded6 1px, transparent 1px),
+    linear-gradient(to bottom, #e3ded6 1px, transparent 1px);
+  background-size: 10px 10px;
+  -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent);
+  mask-image: radial-gradient(closest-side, #000 30%, transparent);
+}
+/* Section that rises in with a dome, and one that ends in a bowl. */
+.dome {
+  border: 1px solid var(--color-line);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / min(420px, 40vw) min(420px, 40vw) 0 0;
+  background: var(--color-sheet);
+}
+.bowl {
+  border: 1px solid var(--color-line);
+  border-top: 0;
+  border-radius: 0 0 50% 50% / 0 0 min(380px, 36vw) min(380px, 36vw);
+  background: var(--color-sheet);
+}
+.footer-mark {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #e2ddd5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .plane-shader {
+    animation: none;
   }
 }

@@ -11,7 +11,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { usePrefersReducedMotion } from "@/lib/hooks";
-import { PixelField } from "./PixelField";
+import { GridPatch } from "./PaperBackdrop";
 import { ScaledStage } from "./ScaledStage";
 import { Eyebrow, LogoMark, Reveal, SectionHeading } from "./ui";
 
@@ -215,9 +215,10 @@ const cards = [
 
 export function Setup() {
   return (
-    <section className="relative overflow-hidden border-y border-line bg-page">
-      <div className="relative z-10 mx-auto flex flex-col items-center bg-hero px-4 py-20 text-center md:py-28 lg:max-w-[1120px] lg:border-x lg:border-line lg:px-10">
-        <PixelField variant="setup" />
+    <section className="relative overflow-hidden">
+      <div className="relative z-10 mx-auto flex flex-col items-center px-4 pt-36 pb-20 text-center md:pt-48 md:pb-28 lg:max-w-[min(1200px,calc(100vw-96px))] lg:px-10">
+        <div aria-hidden="true" className="dome absolute inset-0 -z-10" />
+        <GridPatch className="top-10 -right-16 hidden h-[420px] w-[380px] lg:block" />
         <Eyebrow>SUPER FAST SETUP</Eyebrow>
         <SectionHeading
           first="The hardest part about switching"
@@ -228,16 +229,19 @@ export function Setup() {
           setup takes hours, not quarters. Go from sign-up to your first live
           app before lunch.
         </p>
-        <div className="mt-8 grid w-full max-w-[1120px] grid-cols-1 gap-5 text-left sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mt-10 grid w-full max-w-[1120px] grid-cols-1 gap-px border border-line bg-line text-left sm:grid-cols-2 lg:grid-cols-3">
+          {["-top-1 -left-1", "-top-1 -right-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map((pos) => (
+            <span key={pos} aria-hidden="true" className={`handle z-10 ${pos}`} />
+          ))}
           {cards.map(({ title, body, Art }, i) => (
             <Reveal
               key={title}
               delay={i * 0.15}
-              className="flex flex-col rounded-3xl border border-line bg-white px-2 pt-2 pb-6"
+              className="flex flex-col bg-[#fefdfb] px-3 pt-3 pb-8"
             >
               <div
                 aria-hidden="true"
-                className="overflow-hidden rounded-2xl bg-hero"
+                className="overflow-hidden border border-line bg-hero"
               >
                 <ScaledStage width={344} height={220}>
                   <Art />

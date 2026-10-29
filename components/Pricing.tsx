@@ -28,7 +28,7 @@ export function Pricing() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section id="pricing" className="flex scroll-mt-24 flex-col items-center bg-surface px-4 py-20 text-center md:py-28">
+    <section id="pricing" className="flex scroll-mt-24 flex-col items-center px-4 py-20 text-center md:py-28">
       <Eyebrow>PRICING</Eyebrow>
       <Reveal
         as="h2"
@@ -62,7 +62,7 @@ export function Pricing() {
         ))}
       </Reveal>
 
-      <div className="mt-8 grid w-full max-w-[1120px] grid-cols-1 overflow-hidden rounded-3xl border border-line-2 md:grid-cols-3">
+      <div className="mt-8 grid w-full max-w-[1120px] grid-cols-1 overflow-hidden border border-line-2 bg-[#fefdfb] md:grid-cols-3">
         {plans.map((plan, i) => {
           const price = yearly ? plan.yearly : plan.monthly;
           const unit = plan.unit === "/forever" ? plan.unit : yearly ? "/user/month, billed yearly" : plan.unit;

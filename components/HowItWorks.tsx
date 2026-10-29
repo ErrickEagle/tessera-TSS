@@ -107,7 +107,7 @@ export function HowItWorks() {
   }, [active]);
 
   return (
-    <section id="how-it-works" className="flex flex-col items-center bg-surface px-4 pt-20 pb-20 text-center md:pt-28 md:pb-28">
+    <section id="how-it-works" className="flex flex-col items-center px-4 pt-20 pb-20 text-center md:pt-28 md:pb-28">
       <Eyebrow>HOW IT WORKS</Eyebrow>
       <SectionHeading first="From scattered data" second="to systems that run themselves" />
 
