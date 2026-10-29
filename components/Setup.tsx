@@ -11,7 +11,6 @@ import {
   Workflow,
 } from "lucide-react";
 import { usePrefersReducedMotion } from "@/lib/hooks";
-import { GridPatch } from "./PaperBackdrop";
 import { ScaledStage } from "./ScaledStage";
 import { Eyebrow, LogoMark, Reveal, SectionHeading } from "./ui";
 
@@ -216,9 +215,7 @@ const cards = [
 export function Setup() {
   return (
     <section className="relative overflow-hidden">
-      <div className="relative z-10 mx-auto flex flex-col items-center px-4 pt-36 pb-20 text-center md:pt-48 md:pb-28 lg:max-w-[min(1200px,calc(100vw-96px))] lg:px-10">
-        <div aria-hidden="true" className="dome absolute inset-0 -z-10" />
-        <GridPatch className="top-10 -right-16 hidden h-[420px] w-[380px] lg:block" />
+      <div className="relative z-10 mx-auto flex flex-col items-center px-4 py-20 text-center md:py-28 lg:max-w-[min(1200px,calc(100vw-64px))] lg:px-10">
         <Eyebrow>SUPER FAST SETUP</Eyebrow>
         <SectionHeading
           first="The hardest part about switching"

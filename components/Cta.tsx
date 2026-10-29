@@ -4,8 +4,7 @@ export function Cta() {
   return (
     <section className="relative overflow-hidden">
       <div className="relative mx-auto max-w-[1440px]">
-        <div className="relative z-10 flex min-h-[400px] flex-col items-center justify-center px-4 pt-20 pb-32 text-center md:min-h-[520px] md:pb-44 lg:mx-auto lg:max-w-[min(1200px,calc(100vw-96px))]">
-          <div aria-hidden="true" className="bowl absolute inset-0 -z-10" />
+        <div className="relative z-10 flex min-h-[400px] flex-col items-center justify-center px-4 py-20 text-center md:min-h-[480px] lg:mx-auto lg:max-w-[min(1200px,calc(100vw-64px))]">
           <Reveal
             as="h2"
             className="text-[32px] leading-10 font-medium tracking-[-0.035em] text-ink sm:text-[48px] sm:leading-[56px] md:text-[56px] md:leading-[64px]"

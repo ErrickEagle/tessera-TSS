@@ -650,14 +650,14 @@
 
 /* ---------- Paper backdrop ---------- */
 .plane {
-  background: linear-gradient(160deg, #ebe9e1 0%, #e7e4db 100%);
+  background: linear-gradient(160deg, #eeece6 0%, #ebe9e2 100%);
 }
 .plane-alt {
   background: linear-gradient(200deg, #f6f5f0 0%, #eeece5 100%);
 }
 /* A slow gradient drifting across the plane, like light moving over paper. */
 .plane-shader {
-  background: linear-gradient(120deg, #ebe9e1, #e7e4f2, #f1e9df, #e3ece6, #ebe9e1);
+  background: linear-gradient(120deg, #ebe9e1, #f2f0ea, #e6e3db, #efede6, #ebe9e1);
   background-size: 400% 400%;
   animation: plane-drift 24s ease-in-out infinite alternate;
 }
@@ -684,26 +684,10 @@
   border: 1px solid #d8d2ca;
   background: var(--color-sheet);
 }
-.grid-patch {
-  background-image:
-    linear-gradient(to right, #e3ded6 1px, transparent 1px),
-    linear-gradient(to bottom, #e3ded6 1px, transparent 1px);
-  background-size: 10px 10px;
-  -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent);
-  mask-image: radial-gradient(closest-side, #000 30%, transparent);
-}
-/* Section that rises in with a dome, and one that ends in a bowl. */
-.dome {
+/* The full circle behind How it works. */
+.page-circle {
   border: 1px solid var(--color-line);
-  border-bottom: 0;
-  border-radius: 50% 50% 0 0 / min(420px, 40vw) min(420px, 40vw) 0 0;
-  background: var(--color-sheet);
-}
-.bowl {
-  border: 1px solid var(--color-line);
-  border-top: 0;
-  border-radius: 0 0 50% 50% / 0 0 min(380px, 36vw) min(380px, 36vw);
-  background: var(--color-sheet);
+  background: #fefdfb;
 }
 .footer-mark {
   color: transparent;

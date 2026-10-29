@@ -44,8 +44,9 @@ export function Nav() {
 
   return (
     <header
-      className={`intro-nav fixed inset-x-4 top-4 z-[60] mx-auto rounded-[28px] border border-[#E4DFD9] bg-white transition-[left,right,max-width,box-shadow] duration-400 ease-out-soft md:inset-x-8 md:top-6 ${
-        scrolled ? "max-w-[1376px] shadow-float xl:inset-x-[120px] xl:max-w-[1200px]" : "max-w-[1376px]"
+      // Same width and side spacing as the dashboard, so the nav sits inside the page column.
+      className={`intro-nav fixed inset-x-4 top-4 z-[60] mx-auto max-w-[1120px] rounded-[28px] border border-[#E4DFD9] bg-white transition-shadow duration-400 ease-out-soft md:top-6 lg:inset-x-14 ${
+        scrolled ? "shadow-float" : ""
       }`}
     >
       <div className="flex h-14 items-center justify-between pr-2 pl-5 md:pl-6">

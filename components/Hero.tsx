@@ -34,7 +34,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="relative mx-auto max-w-[1440px]">
 
-        <div className="relative z-10 flex flex-col items-center lg:mx-auto lg:max-w-[min(1200px,calc(100vw-96px))]">
+        <div className="relative z-10 flex flex-col items-center lg:mx-auto lg:max-w-[min(1200px,calc(100vw-64px))]">
           <div className="flex w-full flex-col items-center px-4 pt-[120px] text-center md:pt-[184px]">
             <h1 className="text-[36px] leading-[44px] font-medium tracking-[-0.035em] text-ink sm:text-[48px] sm:leading-[56px] md:text-[56px] md:leading-[64px]">
               <Words text="Run your business on" start={0} />
@@ -51,7 +51,7 @@ export function Hero() {
             <div className="intro relative mt-10 w-full max-w-[736px] sm:px-8 sm:pt-[37px]" style={intro(0.95)}>
               <div
                 aria-hidden="true"
-                className="absolute inset-x-0 top-0 hidden h-[216px] rounded-t-[48px] border border-b-0 border-[#E2DDD7] sm:block"
+                className="absolute inset-x-0 top-0 hidden h-[216px] rounded-t-[48px] border border-b-0 border-[#E2DDD7] [mask-image:linear-gradient(180deg,#000_30%,transparent)] sm:block"
               />
               <div className="relative rounded-2xl bg-inset p-2">
                 <div className="rounded-[10px] bg-white p-4 shadow-[0_1px_2px_rgba(28,23,21,0.06)]">

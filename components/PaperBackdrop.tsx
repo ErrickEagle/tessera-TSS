@@ -19,7 +19,7 @@ export function PaperBackdrop() {
       <div className="ruler ruler-right absolute inset-y-0 right-0 hidden w-6 border-l border-line lg:block" />
 
       {/* The centre column: a lighter sheet with hairline edges. */}
-      <div className="absolute inset-y-0 left-1/2 hidden w-[1200px] max-w-[calc(100vw-96px)] -translate-x-1/2 border-x border-line bg-sheet lg:block" />
+      <div className="absolute inset-y-0 left-1/2 hidden w-[min(1200px,calc(100vw-64px))] -translate-x-1/2 bg-sheet lg:block" />
     </div>
   );
 }
@@ -27,15 +27,10 @@ export function PaperBackdrop() {
 /** A hairline across the centre column with square handles at both ends, between sections. */
 export function SectionRule() {
   return (
-    <div aria-hidden="true" className="relative mx-auto h-px w-full max-w-[1200px] bg-line lg:max-w-[min(1200px,calc(100vw-96px))]">
+    <div aria-hidden="true" className="relative mx-auto h-px w-full max-w-[1200px] bg-line lg:max-w-[min(1200px,calc(100vw-64px))]">
       <span className="handle -top-[3.5px] -left-[4px] hidden lg:block" />
       <span className="handle -top-[3.5px] -right-[4px] hidden lg:block" />
       <span className="handle -top-[3.5px] left-1/2 -ml-[4px] hidden lg:block" />
     </div>
   );
-}
-
-/** A patch of fine grid that fades out, like the margin of a cutting mat. */
-export function GridPatch({ className = "" }: { className?: string }) {
-  return <div aria-hidden="true" className={`grid-patch pointer-events-none absolute ${className}`} />;
 }

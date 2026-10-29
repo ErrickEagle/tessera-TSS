@@ -33,7 +33,7 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-[#f6f4ef] px-4 pt-16 pb-[22vw] shadow-[0_-12px_32px_-20px_rgba(28,23,21,0.18)] sm:px-8 lg:px-16">
+    <footer className="relative overflow-hidden border-t border-line bg-[#f6f4ef] px-4 pt-16 pb-[22vw] sm:px-8 lg:px-16">
       <span
         aria-hidden="true"
         className="footer-mark pointer-events-none absolute -bottom-[0.18em] left-1/2 -translate-x-1/2 text-[30vw] leading-none font-medium tracking-[-0.06em] whitespace-nowrap select-none"

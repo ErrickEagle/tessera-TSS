@@ -28,7 +28,7 @@ export function Pricing() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section id="pricing" className="flex scroll-mt-24 flex-col items-center px-4 py-20 text-center md:py-28">
+    <section id="pricing" className="flex scroll-mt-24 flex-col items-center px-4 lg:px-14 py-20 text-center md:py-28">
       <Eyebrow>PRICING</Eyebrow>
       <Reveal
         as="h2"
