@@ -14,6 +14,9 @@ export function PaperBackdrop() {
       <div className="plane plane-alt absolute top-[66%] right-0 h-[1400px] w-[48vw]" style={{ clipPath: "polygon(100% 0, 100% 100%, 0 38%)" }} />
       <div className="plane plane-shader absolute top-[84%] left-0 h-[1000px] w-[56vw]" style={{ clipPath: "polygon(0 18%, 100% 100%, 0 100%)" }} />
 
+      {/* Paper's canvas grid over the whole backdrop: solid hairlines across, dotted lines down. */}
+      <div className="canvas-grid absolute inset-0" />
+
       {/* Rulers down the left and right screen edges. */}
       <div className="ruler absolute inset-y-0 left-0 hidden w-6 border-r border-line lg:block" />
       <div className="ruler ruler-right absolute inset-y-0 right-0 hidden w-6 border-l border-line lg:block" />
@@ -34,15 +37,28 @@ export function SectionRule() {
   );
 }
 
+const COL = "min(1200px, calc(100vw - 64px))";
+
 /**
- * Paper's canvas grid for the margins: thin solid lines across, dotted lines down.
- * Place inside a column-wide wrapper; it runs from the column edge to the screen edge.
+ * Soft white and cream light drifting in one side margin. GutterShader sits inside a
+ * column-wide wrapper; WideShader sits in a full-width section.
  */
-export function CanvasGrid({ side }: { side: "left" | "right" }) {
+export function GutterShader({ side }: { side: "left" | "right" }) {
   return (
     <div
       aria-hidden="true"
-      className={`canvas-grid pointer-events-none absolute inset-y-0 hidden w-[50vw] lg:block ${side === "right" ? "left-full" : "right-full canvas-grid-left"}`}
+      className={`margin-shader pointer-events-none absolute inset-y-0 hidden lg:block ${side === "right" ? "left-full" : "right-full"}`}
+      style={{ width: `calc((100vw - ${COL}) / 2)` }}
+    />
+  );
+}
+
+export function WideShader({ side }: { side: "left" | "right" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`margin-shader pointer-events-none absolute inset-y-0 hidden lg:block ${side === "right" ? "right-0" : "left-0"}`}
+      style={{ width: `calc((100vw - ${COL}) / 2)` }}
     />
   );
 }

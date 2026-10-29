@@ -22,6 +22,7 @@ import {
 import { howSteps } from "@/lib/content";
 import { AgentsVisual, AnalyticsVisual, AppsVisual, GovernanceVisual, IntegrationsVisual } from "./StepVisuals";
 import { ArrowButton, Eyebrow, SectionHeading } from "./ui";
+import { WideShader } from "./PaperBackdrop";
 
 type Step = {
   eyebrow: string;
@@ -107,7 +108,8 @@ export function HowItWorks() {
   }, [active]);
 
   return (
-    <section id="how-it-works" className="relative flex flex-col items-center px-4 pt-20 lg:px-14 lg:pt-40 pb-20 text-center md:pt-28 md:pb-28">
+    <section id="how-it-works" className="relative flex flex-col items-center px-4 pt-20 lg:px-14 lg:pt-[360px] pb-20 text-center md:pt-28 md:pb-28">
+      <WideShader side="left" />
       <Eyebrow>HOW IT WORKS</Eyebrow>
       <SectionHeading first="From scattered data" second="to systems that run themselves" />
 

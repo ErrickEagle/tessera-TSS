@@ -49,7 +49,7 @@ export function Pricing() {
   return (
     <section
       id="pricing"
-      className="flex scroll-mt-24 flex-col items-center px-4 py-20 text-center md:py-28 lg:px-14 lg:pb-[360px]"
+      className="flex scroll-mt-24 flex-col items-center px-4 py-20 text-center md:py-28 lg:px-14 lg:pb-[560px]"
     >
       <Eyebrow>PRICING</Eyebrow>
       <Reveal

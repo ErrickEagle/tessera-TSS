@@ -5,6 +5,7 @@ import { impactStats, testimonials } from "@/lib/content";
 import { useInViewOnce, usePrefersReducedMotion } from "@/lib/hooks";
 import { Shader } from "./Shader";
 import { Avatar, Reveal } from "./ui";
+import { WideShader } from "./PaperBackdrop";
 
 function CountUp({ to, suffix, run, reduced }: { to: number; suffix: string; run: boolean; reduced: boolean }) {
   const [value, setValue] = useState(reduced ? to : 0);
@@ -59,7 +60,8 @@ export function Testimonial() {
   const t = testimonials[index];
 
   return (
-    <section className="flex justify-center px-4 lg:px-14 py-20 md:py-28">
+    <section className="relative flex justify-center px-4 lg:px-14 py-20 md:py-28">
+      <WideShader side="right" />
       <div className="grid w-full max-w-[1120px] grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,560px)_1fr] lg:gap-20">
         <Reveal className="relative w-full max-w-[560px] overflow-hidden rounded-3xl">
           <div ref={statsRef} className="relative w-full sm:aspect-square">

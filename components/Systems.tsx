@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { liveCounters, teamTabs, type TeamTab } from "@/lib/content";
 import { Dashboard } from "./Dashboard";
 import { Eyebrow, Reveal, SectionHeading } from "./ui";
+import { WideShader } from "./PaperBackdrop";
 
 function LiveCounters() {
   const [values, setValues] = useState<number[]>(() => liveCounters.map((c) => c.start));
@@ -34,7 +35,8 @@ export function Systems() {
   const [tab, setTab] = useState<TeamTab>("Ops");
 
   return (
-    <section className="flex flex-col items-center px-4 lg:px-14 py-20 text-center md:py-28">
+    <section className="relative flex flex-col items-center px-4 lg:px-14 py-20 text-center md:py-28">
+      <WideShader side="right" />
       <Eyebrow>BUILD SYSTEMS, NOT TOOLS</Eyebrow>
       <SectionHeading first="Stop wiring up tools." second="Run one connected system." />
       <p className="mt-4 max-w-[391px] text-base leading-6 text-body">
